@@ -1,8 +1,8 @@
 //Deps
 import React,{Suspense} from 'react';
 //logo
-import logo from './logo.svg';
-import './App.css';
+//styles
+import {StyledApp} from './07-Styles/app.style';
 //Paths
 import PATHS from './04-Constants/Routes'
 //Components
@@ -22,18 +22,20 @@ const COMPONENT_PATHS = [
 
 function App() {
   return (
-    <BrowserRouter>
-    <Switch>
-      {COMPONENT_PATHS.map(({path,Component})=>(
-        <Route path={path} exact key={path}>
-          <Suspense fallback={<div>loading...</div>}>
-            <Component/>
-          </Suspense>
-        </Route>
-      ))}
-        <Redirect to={PATHS.PAGE_NOT_FOUND}/>
-    </Switch>
-  </BrowserRouter>
+    <StyledApp>
+        <BrowserRouter>
+        <Switch>
+          {COMPONENT_PATHS.map(({path,Component})=>(
+            <Route path={path} exact key={path}>
+              <Suspense fallback={<div>loading...</div>}>
+                <Component/>
+              </Suspense>
+            </Route>
+          ))}
+            <Redirect to={PATHS.PAGE_NOT_FOUND}/>
+        </Switch>
+      </BrowserRouter>
+    </StyledApp>
   );
 }
 
