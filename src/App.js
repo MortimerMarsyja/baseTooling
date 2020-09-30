@@ -1,5 +1,7 @@
 //Deps
 import React,{Suspense} from 'react';
+import { createStore, applyMiddleware, compose } from 'redux';
+import thunk from 'redux-thunk';
 //logo
 //styles
 import {StyledApp} from './07-Styles/app.style';
@@ -7,12 +9,24 @@ import {StyledApp} from './07-Styles/app.style';
 import PATHS from './04-Constants/Routes'
 //Components
 import {BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+//Reducers
+import rootReducer from './03-Reducers/rootReducer';
+import { Provider } from 'react-redux';
 
 
 //Pages
 const MainPage = React.lazy(()=>import('./01-Pages/MainPage'));
 const OutOfBounds = React.lazy(()=>import('./01-Pages/OutOfBounds'));
 
+const createReduxStore = () => {
+  let composeEnhancers = compose;
+  if (process.env.NODE_ENV === 'development') {
+    if (typeof window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ === 'function') {
+      composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
+    }
+  }
+  return createStore(rootReducer, undefined, composeEnhancers(applyMiddleware(thunk)));
+};
 
 
 const COMPONENT_PATHS = [
@@ -23,18 +37,20 @@ const COMPONENT_PATHS = [
 function App() {
   return (
     <StyledApp>
-        <BrowserRouter>
-        <Switch>
-          {COMPONENT_PATHS.map(({path,Component})=>(
-            <Route path={path} exact key={path}>
-              <Suspense fallback={<div>loading...</div>}>
-                <Component/>
-              </Suspense>
-            </Route>
-          ))}
-            <Redirect to={PATHS.PAGE_NOT_FOUND}/>
-        </Switch>
-      </BrowserRouter>
+        <Provider store={createReduxStore()}>
+          <BrowserRouter>
+          <Switch>
+            {COMPONENT_PATHS.map(({path,Component})=>(
+              <Route path={path} exact key={path}>
+                <Suspense fallback={<div>loading...</div>}>
+                  <Component/>
+                </Suspense>
+              </Route>
+            ))}
+              <Redirect to={PATHS.PAGE_NOT_FOUND}/>
+          </Switch>
+        </BrowserRouter>
+      </Provider>
     </StyledApp>
   );
 }
