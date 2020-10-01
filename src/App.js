@@ -4,7 +4,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 //logo
 //styles
-import {StyledApp} from './07-Styles/app.style';
+import StyledApp from './07-Styles/app.style';
 //Paths
 import PATHS from './04-Constants/Routes'
 //Components
@@ -36,22 +36,22 @@ const COMPONENT_PATHS = [
 
 function App() {
   return (
-    <StyledApp>
-        <Provider store={createReduxStore()}>
-          <BrowserRouter>
-          <Switch>
-            {COMPONENT_PATHS.map(({path,Component})=>(
-              <Route path={path} exact key={path}>
-                <Suspense fallback={<div>loading...</div>}>
-                  <Component/>
-                </Suspense>
-              </Route>
-            ))}
-              <Redirect to={PATHS.PAGE_NOT_FOUND}/>
-          </Switch>
-        </BrowserRouter>
-      </Provider>
-    </StyledApp>
+      <StyledApp>
+            <Provider store={createReduxStore()}>
+              <BrowserRouter>
+              <Switch>
+                {COMPONENT_PATHS.map(({path,Component})=>(
+                  <Route path={path} exact key={path}>
+                    <Suspense fallback={<div>loading...</div>}>
+                      <Component/>
+                    </Suspense>
+                  </Route>
+                ))}
+                  <Redirect to={PATHS.PAGE_NOT_FOUND}/>
+              </Switch>
+            </BrowserRouter>
+          </Provider>
+      </StyledApp>
   );
 }
 

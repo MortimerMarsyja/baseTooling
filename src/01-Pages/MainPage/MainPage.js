@@ -26,7 +26,7 @@ const MainPage = () =>{
             <CountComponent 
                 value={count} 
                 addFunction={()=>dispatch(addToCountAction(1))} 
-                decreaseFunction={()=>dispatch(substractFromCountAction(1))}
+                substractFunction={()=>dispatch(substractFromCountAction(1))}
             />
         </>
     )

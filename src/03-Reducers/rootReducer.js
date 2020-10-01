@@ -1,11 +1,11 @@
 //Deps
 import {combineReducers} from 'redux';
 
-import {addCountReducer} from './addCountReducer';
+import {countReducer} from './countReducer';
 
 
 export default combineReducers({
-    count:addCountReducer,
+    count:countReducer,
 })
   
   

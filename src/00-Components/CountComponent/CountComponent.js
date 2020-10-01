@@ -1,10 +1,10 @@
 import React from 'react';
-import StyledCount from './CountCompoenent.style';
+import StyledCount from './countComponent.style';
 
-const CountComponent = ({value,addFunction,decreaseFunction}) => {
+const CountComponent = ({value,addFunction,substractFunction}) => {
     return(
         <StyledCount>
-            <button onClick={decreaseFunction}>-</button>
+            <button onClick={substractFunction}>-</button>
                 <p>{value}</p>
             <button onClick={addFunction}>+</button>
         </StyledCount>
