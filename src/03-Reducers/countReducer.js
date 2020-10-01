@@ -4,7 +4,7 @@ const reducers = {
     SUBSTRACT_FROM_COUNT:(state,payload)=> state - payload,
 }
 
-export const addCountReducer = (state=0,action) => {
+export const countReducer = (state=0,action) => {
     return (reducers[action.type]||reducers.default)(state,action.payload)
 }
 

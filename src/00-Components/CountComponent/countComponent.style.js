@@ -6,19 +6,18 @@ const StyledCount = styled.div`
     align-items:center;
     height:30px;
     width:86px;
-    p{
-        margin:0 1em;
-    }
     button{
-        width:22px;
-        height:22px;
+        padding:6px;
         background-color:${blueColor};
         color:${whiteColor};
         line-height:9px;
         border:none;
+        &:active,focus{
+            outline:0;
+        }
     }
-    &:active{
-        outline:none;
+    p{
+        text-align:center;
     }
 `
 
