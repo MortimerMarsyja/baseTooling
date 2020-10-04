@@ -1,4 +1,6 @@
+//Deps
 import React from 'react';
+//Components
 import Logo from '../../00-Components/Logo'
 import CountComponent from '../../00-Components/CountComponent';
 //Hooks
