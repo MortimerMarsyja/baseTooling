@@ -9,10 +9,12 @@ import StyledApp from './07-Styles/app.style';
 import PATHS from './04-Constants/Routes'
 //Components
 import {BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import LoadingComponent from './00-Components/LoadingComponent';
 //Reducers
 import rootReducer from './03-Reducers/rootReducer';
 import { Provider } from 'react-redux';
-
+//Constant
+import iconList from './04-Constants/svg/iconList';
 
 //Pages
 const MainPage = React.lazy(()=>import('./01-Pages/MainPage'));
@@ -42,7 +44,11 @@ function App() {
               <Switch>
                 {COMPONENT_PATHS.map(({path,Component})=>(
                   <Route path={path} exact key={path}>
-                    <Suspense fallback={<div>loading...</div>}>
+                    <Suspense fallback={
+                      <div>Loading...
+                        <LoadingComponent size="24px" icon={iconList.llama} color='red'/>
+                      </div>}
+                    >
                       <Component/>
                     </Suspense>
                   </Route>

@@ -2,7 +2,7 @@ import styled from "styled-components";
 import {blueColor,greyColors} from './colorPalette';
 import CSSRESET from './cssReset.style';
 
-const StyledApp = styled.div`
+const StyledApp = styled('div')`
     ${CSSRESET}
     font-family:Arial, Helvetica, sans-serif;
     h1{
@@ -14,7 +14,7 @@ const StyledApp = styled.div`
     },
     h2{
         font-size:1.44em;
-        font-weight:600;
+        font-weight: 600;
         line-height: 1.2em;
         margin: 0.60em 0;
         color:${greyColors[600]};
