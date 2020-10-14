@@ -46,7 +46,7 @@ function App() {
                   <Route path={path} exact key={path}>
                     <Suspense fallback={
                       <div>Loading...
-                        <LoadingComponent size="24px" icon={iconList.llama} color='red'/>
+                        <LoadingComponent size="32px" icon={iconList.llama} color='red'/>
                       </div>}
                     >
                       <Component/>

@@ -8,7 +8,6 @@ import { useSelector,useDispatch } from 'react-redux';
 //Actions
 import { addToCountAction,substractFromCountAction} from '../../02-Actions/countActions';
 
-
 const getCountfromStore  = (store) => store.count;
 
 const MainPage = () =>{
